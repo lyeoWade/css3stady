@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{ margin: 0; padding: 0; }
+	.box{  height: 300px; border: 1px solid #ddd;  display: flex; flex-direction:row; overflow: hidden; resize:both; justify-content:space-between; }
+
+	/*
+	flex-direction:row; // 默认 左到右
+				   row-reverse //右到左
+				   column  //上到下
+				   column-reverse //下倒上
+
+	justify-content:flex-start;(默认) 元素在开始位置 富裕空间占据另一侧
+					flex-end;//富裕空间在开始位置 元素占据另一侧
+					content//元素居中 富裕空间 平分左右两侧
+					space-between 富裕空间在元素之间平均分配
+					space-around // 富裕空间平均分配在每个元素的左右两侧
+
+	*/
+	.box div,.box span{width: 100px; border: 1px solid #fff;   background: #f00; width: 100px; height: 100px;  }
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+		<span>6</span>
+		<span>7</span>
+		<span>8</span>
+	</div>
+</body>
+</html>
