@@ -1,0 +1,308 @@
+/* LESS Document */
+
+@import "common.less";
+
+
+/* 线路旅游 */
+
+
+.line_head{
+	
+	.mtauto;
+	background:#fff;
+	padding-top:40px;
+	
+	.line_box{
+		.sauto;
+		
+		.line_head_top{
+			h2{
+				line-height:50px;
+				border-bottom:2px solid #cccccc;
+				text-indent:10px;
+				font-weight:normal;
+				font-size:26px;	
+			}	
+		}	
+		
+		.line_head_column{
+			
+			
+			.line_head_column_head{
+				min-height:70px;
+				color:#1c1c1c;
+				font-size:16px;
+				padding:10px 0 20px 16px;
+				div{
+					
+					line-height:30px;
+					
+					width:150px;
+					padding:35px 10px 0;	
+					&.dayNum{
+						
+						background:url(../images/lineDetail_icon.png) no-repeat 14px 0;
+					}
+					&.bestway{
+						background:url(../images/lineDetail_icon.png) no-repeat 14px -82px;	
+					}
+					&.howmoney{
+						background:url(../images/lineDetail_icon.png) no-repeat 14px -149px;	
+					}
+					&.linepoint{
+						
+						background:url(../images/lineDetail_icon.png) no-repeat 14px -250px;
+					}
+					&.besttime{
+						background:url(../images/lineDetail_icon.png) no-repeat 14px -356px;		
+					}
+					&.cooperate{
+						background:url(../images/lineDetail_icon.png) no-repeat 14px -452px;
+					}
+				}
+				
+			}
+			
+			
+			/* 说明对 */
+			.line_head_column_des{
+				
+					font-size:14px;
+					padding:10px 0 20px 16px;
+					
+					div{
+						width:140px;
+						padding:0 9px;	
+						min-height:110px;
+					}
+					.dayNum_des{
+						font-size:20px;
+						
+						span{
+							display:inline-block;
+							width:80px;
+							height:80px;
+							text-align:center;
+							line-height:80px;
+							background:#4ecdc4;
+							color:#fff;
+						}
+					}
+					.howmoney_des{
+						border-right:1px solid #cdcdcd;
+					}
+					.bestway_des{
+						border-left:1px solid #cdcdcd;
+						border-right:1px solid #cdcdcd;
+						line-height:24px;	
+					}
+					.linepoint_des{
+						width:200px;
+						a{
+							.slh;
+							display:inline-block;
+							width:100%;
+							line-height:24px;
+							color:#008cb0;	
+						}	
+					}
+					.besttime_des{
+						border-left:1px solid #cdcdcd;
+						border-right:1px solid #cdcdcd;
+					}
+					.cooperate_des{
+						li{
+							line-height:38px;
+							padding-right:50px;
+							height:38px;	
+							position:@res;
+							.slh;
+						}
+						.line_order{
+							display:inline-block;
+							position:@abs;
+							right:-00px;
+							top:0px;
+							padding:4px 10px;
+							background:#65b319;
+							color:#fff;
+							margin-top:6px;
+							line-height:18px;
+						}
+					}
+				
+			}
+		}
+	}
+	
+}
+
+
+
+
+
+/*-- 旅游天数 --*/
+
+.line_days_warp{
+	background:#fff;
+	.mtauto;
+	margin-top:50px;
+	.linepoint_box{
+		.sauto;
+		
+		padding:30px 0;
+	}
+	.secend{
+		h3{
+			right:24px;
+			left:auto;
+		}
+				
+	}
+}
+
+.linepoint_box_warp{
+position:@res;
+h3{
+	height:50px;
+	min-width:60px;
+	padding:0 8px;
+	text-align:center;
+	line-height:50px;
+	color:#fff;
+	background:#4ecdc4;
+	position:@abs;
+	top:-80px;	
+	left:24px;
+}
+
+.linepoint_list{
+	margin-bottom:62px;
+	.mark{
+		.absbl0;
+		height:40px;
+		padding:10px 14px;
+		line-height:20px;
+		color:#fff;
+		background:url(../images/black-mark.png) repeat;	
+	}	
+	.lineright_des_sec{
+		margin:0 30px 0 0 !important; 	
+	}
+	
+	
+	.lineleft_photo{
+		
+		.lineleft_photo_big{
+			position:@res;
+			width:504px;	
+			height:282px;
+			img{
+				display:block;
+				width:504px;
+				height:282px;	
+			}
+			.line_mark{
+				.mark;
+			}	
+		}
+		
+		.lineleft_photo_s{
+			margin-top:8px;
+			.lineleft_photo_smll{
+				position:@res;
+				margin-right:10px;
+				img{
+					width:247px;
+					height:140px;
+				}
+				.line_mark{
+					.mark;	
+				}
+			}
+		}
+	}
+}
+
+}
+
+
+.lineright_des{
+	margin-left:30px;
+	width:490px;
+	
+	.view_name{
+		height:40px;
+		line-height:30px;
+		span{
+			color:#fff;
+			background:#4ecdc4;
+			padding:6px 42px;
+			font-size:16px;	
+		}	
+	}	
+	.view_des{
+		font-size:14px;
+		line-height:24px;
+		color:#1c1c1c;	
+	}
+	.comsty{
+		padding-left:40px;
+		height:34px;
+		line-height:34px;
+		font-size:14px;
+	}
+	.view_price{
+		
+		background:url(../images/tic.png) no-repeat 0 10px;
+		.comsty;
+		margin-top:10px;
+		font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+		span{
+			padding-left:10px;
+			position:@res;
+			em,i{
+				top:-4px;
+				font-size:12px;
+				position:@abs;
+				font-style:normal;
+				text-transform:uppercase;	
+			}
+			em{
+				left:2px;	
+			}
+			font-size:30px;	
+		}	
+	}
+	.view_tel{
+		.comsty;
+		background:url(../images/telicon.png) no-repeat 4px 10px;
+	}
+	.view_addres{
+		.comsty;
+		background:url(../images/address.png) no-repeat 7px 10px;
+	}
+	.view_more{
+		text-align:right;
+		padding-right:20px;
+		height:26px;
+		line-height:26px;
+		a{
+			color:#77d0e7;
+			text-decoration:underline;
+		}
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

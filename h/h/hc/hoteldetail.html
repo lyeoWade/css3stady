@@ -1,0 +1,1217 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>合川旅游网---目的地景点详情</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link type="text/css" rel="stylesheet" href="css/reset.css" />
+<link href="css/foodDetail.css" rel="stylesheet" type="text/css" />
+<script src="http://api.map.baidu.com/api?v=1.3"></script>
+
+
+
+</head>
+
+<body>
+<!-- head -->
+
+
+
+<div class="head-warp" style="position:relative; z-index:20;">
+    <div class="head-box">
+        <div class="head-top clearfix">
+            <div class="logo fl">
+                <a href="/"><img src="images/logo.png" /></a>
+            </div>
+            <div class="user-box fr clearfix">
+                <div class="search-ico fl"><a href="search.html"></a></div>
+                <div class="fl logoned">
+                    <!-- 登陆成功 
+                    <span>Elaborate </span>
+                    <a href="">[退出]</a>-->
+                    
+                    <!-- 未登录 -->
+            <span id="qqLoginBtn"></span>
+                <script type="text/javascript">
+                  try{
+					   //调用QC.Login方法，指定btnId参数将按钮绑定在容器节点中
+					   QC.Login({
+						   //btnId：插入按钮的节点id，必选
+						   btnId:"qqLoginBtn",   
+						   scope:"all",
+						   
+						   size: "B_S"
+					   }, function(reqData, opts){//登录成功
+						   //根据返回数据，更换按钮显示状态方法
+						   var dom = document.getElementById(opts['btnId']),
+						   _logoutTemplate=[
+								//头像
+								'<span><img src="{figureurl}" class="{size_key}"/></span>',
+								//昵称
+								'<span>{nickname}</span>',
+								//退出
+								'<span><a href="javascript:QC.Login.signOut();">退出</a></span>'    
+						   ].join("");
+						   dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
+							   nickname : QC.String.escHTML(reqData.nickname), //做xss过滤
+							   figureurl : reqData.figureurl
+						   }));
+					   }, function(opts){//注销成功
+							 alert('QQ登录 注销成功');
+					   }
+					);
+				}catch (e){console.log(e)}
+                </script>
+                                   <!--
+                    <a href="" class="weixin"></a>
+                   --> 
+                   
+                </div>
+
+               <!-- <a href="">我的计划</a>-->
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+<div class="nav_warp" style="position:relative; z-index:10000;">
+    <div style="width:100%;height:48px;display:none" id="pos"></div>
+    <div class="head-nav" id="nav_bar">
+        <ul class="nav">
+            <li class="homeTip"><a href="/">&nbsp;</a></li>
+            <li>
+                
+                <a href="#" class="exp_a">目的地<b></b><span class="Subtitle">Destination</span></a>
+                <div class="dropdown Destination-down " style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-2">
+                            <div class="show-down-warp">
+                            
+                                <h3>您可能想去</h3>
+                                <div class="show-news-list youwantJs">
+                                    
+                                    <!--<div class="show-news-line"><a href="">
+                                    <img src="images/add2.jpg" />
+                                    <div class="show-mark">合川钓鱼城成景区</div>
+                                    </a></div>
+                                    
+                                    
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/add1.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>
+                                    
+                                     <div class="show-news-line"><a href="">
+                                     <img src="images/add3.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>-->
+                                 </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2 quneiJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>区内</h3> 
+                                <div class="water-list Boutique-list ">
+                                    
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                        <div class="col-md-2 jinjiaoJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>近郊</h3> 
+                                <div class="water-list Boutique-list">
+                                    
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                        <div class="col-md-2 yuanjiaoJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>远郊</h3> 
+                                <div class="water-list Boutique-list">
+                                    <!--<a href="#">白鹤湖风景区</a>
+                                    <a href="#">龙多山风景区</a>
+                                    <a href="#">天生寨风景区</a>
+                                    <a href="#">卢作孚故里</a>
+                                    <a href="#">张森楷故居及陵园</a>
+                                    <a href="#">三汇石林</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                 <a href="#" class="exp_a">精彩&bull;发现<b></b><span class="Subtitle">Travel line</span></a>
+                
+                
+                <div class="dropdown show-down" style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-2">
+                            <div class="show-down-warp">
+                                
+                                <h3>当季主打</h3>
+                                <div class="show-news-list zdJs">
+                                    
+                                    <!--<div class="show-news-line"><a href="">
+                                    <img src="images/add1.jpg" />
+                                    <div class="show-mark">合川钓鱼城成景区</div>
+                                    </a></div>
+                                    
+                                    
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/add2.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>
+                                    
+                                     <div class="show-news-line"><a href="">
+                                     <img src="images/add3.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>-->
+                                 </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-2 jpyJs">
+                            <div class="Boutique-down-warp">
+                                <h3>精品之游</h3>   
+                                <div class="Boutique-list">
+                                    <!--<a href="#">人文春色一日游</a>
+                                    <a href="#">人文风情一日游</a>
+                                    <a href="#">山水佛缘一日游</a>
+                                    <a href="#">崇文重教一日游</a>
+                                    <a href="#">健康休闲二日游</a>
+                                    <a href="#">祈福养身二日游</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                        <div class="col-md-2 qsyJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>亲水之旅</h3>   
+                                <div class="water-list Boutique-list">
+                                    <!--<a href="#">激情漂流</a>
+                                    <a href="#">渔鱼之乐</a>
+                                    <a href="#">烧烤露营</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                        <div class="col-md-2 xcyJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>乡村之旅</h3>   
+                                <div class="water-list Boutique-list">
+                                    <!--<a href="#">激情漂流</a>
+                                    <a href="#">渔鱼之乐</a>
+                                    <a href="#">烧烤露营</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                        <div class="col-md-2 jhyJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>节会之游</h3>   
+                                <div class="water-list Boutique-list">
+                                   <!-- <a href="#">激情漂流</a>
+                                    <a href="#">渔鱼之乐</a>
+                                    <a href="#">烧烤露营</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="exp_a">美食&bull;推荐<b></b><span class="Subtitle">Cate</span></a>
+                
+                
+                <div class="dropdown show-down" style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-2">
+                            <div class="show-down-warp">
+                                
+                                <h3>人气最高</h3>
+                                <div class="show-news-list rqzg">
+                                    
+                                    <!--<div class="show-news-line"><a href="">
+                                    <img src="images/add1.jpg" />
+                                    <div class="show-mark">合川钓鱼城成景区</div>
+                                    </a></div>
+                                    
+                                    
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/add2.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>
+                                    
+                                     <div class="show-news-line"><a href="">
+                                     <img src="images/add3.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>-->
+                                 </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="Boutique-down-warp">
+                                <h3>达人美食推荐</h3> 
+                                <div class="Boutique-list Recommend-list ">
+                                   <a href="recommend.html">合川非吃不可(第一期)</a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>合川非吃不可</h3> 
+                                <div class="water-list Boutique-list fcbk">
+                                    <!--<a href="#">三江鱼</a>
+                                    <a href="#">合川肉片</a>
+                                    <a href="#">合川桃片</a>
+                                    <a href="#">鸡肉抄手</a>
+                                    <a href="#">合川米线</a>-->
+                                </div>
+                               
+                            </div>
+                             <div class="Recommend-btn"><a href=""></a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>顶级私房菜</h3>  
+                                <div class="water-list Boutique-list sssfc">
+                                    <a href="#">宴臻私家菜   </a>
+                                    
+                                </div>
+                            </div>
+                             <div class="Recommend-btn"><a href=""></a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>优质美食商家</h3> 
+                                <div class="water-list Boutique-list bizNav">
+                                    
+                                </div>
+                            </div>
+                             <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="exp_a">休闲&bull;住宿<b></b><span class="Subtitle">Hotels</span></a>
+                
+                
+                <div class="dropdown Destination-down stay-down " style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-2">
+                            <div class="show-down-warp">
+                            
+                                <h3>特惠精选</h3>
+                                <div class="show-news-list thjxJs">
+                                    
+                                    <!--<div class="show-news-line"><a href="">
+                                    <img src="images/ss1.jpg" />
+                                    <div class="show-mark">华地王朝酒店</div>
+                                    </a></div>
+                                    
+                                    
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/ss2.jpg" />
+                                    <div class="show-mark">
+                                    <p>金瓯商务酒店</p>
+                                    </div></a></div>
+                                    
+                                     <div class="show-news-line"><a href="">
+                                     <img src="images/ss3.jpg" />
+                                    <div class="show-mark">
+                                    <p>汉庭快捷酒店</p>
+                                    </div></a></div>-->
+                                 </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>商务星级酒店</h3> 
+                                <div class="water-list Boutique-list shangwuji ">
+                                    <!--<a href="#">恭州大酒店</a>
+                                    <a href="#">帝臻酒店</a>
+                                    <a href="#">锦城宾馆</a>
+                                    <a href="#">江城明珠大酒店  </a>-->
+                                  
+                                </div>
+                            </div>
+                           <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>主题型酒店</h3>  
+                                <div class="water-list Boutique-list zhutixing ">
+                                   <!-- <a href="#">合川酒店</a>-->
+                                   
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>经济型酒店</h3>  
+                                <div class="water-list Boutique-list jingjixing">
+                                    <!--<a href="#">汉庭连锁酒店</a>
+                                    <a href="#">潮曼连锁酒店</a>
+                                    <a href="#">七天连锁酒店</a>
+                                    <a href="#">如家连锁酒店</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>度假型酒店</h3>  
+                                <div class="water-list Boutique-list qita">
+                                   <!-- <a href="#">狮子山盟军大本营</a>
+                                    <a href="#">蓬莱客栈</a>
+                                    <a href="#">石泉山庄</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                           <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="exp_a">夜色&bull;合川<b></b><span class="Subtitle">Night Market</span></a>
+                
+                
+                <div class="dropdown Destination-down light-down " style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-2">
+                            <div class="show-down-warp">
+                            
+                                <h3>夜猫子必去地儿</h3>
+                                <div class="show-news-list yemaozibiquzhidi">
+                                   <!-- 
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/yy1.jpg" />
+                                    <div class="show-mark">天伦王朝KTV</div>
+                                    </a></div>
+                                    
+                                    
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/yy2.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川烧烤</p>
+                                    </div></a></div>
+                                    
+                                     <div class="show-news-line"><a href="">
+                                     <img src="images/yy3.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川绿叶酒吧</p>
+                                    </div></a></div>-->
+                                 </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>休闲娱乐</h3>   
+                                <div class="water-list Boutique-list xiuxianyule">
+                                    <!--<a href="#">量贩KTV</a>
+                                    <a href="#">酒吧</a>
+                                    <a href="#">棋牌娱乐</a>
+                                    <a href="#">咖啡</a>
+                                    <a href="#">洗浴</a>
+                                    <a href="#">运动健身</a>-->
+                                </div>
+                            </div>
+                             <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>美味夜宵</h3>   
+                                <div class="water-list Boutique-list meiweixiaoye">
+                                    加载中。。。
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>美味街区</h3>   
+                                <div class="water-list Boutique-list">
+                                    <a href="HeChuanNight1.html">南屏晚钟风情</a>
+                                    <a href="HeChuanNight2.html">金马美食街</a>
+                                    <a href="HeChuanNight3.html">文峰古街</a>
+                                    <a href="HeChuanNight4.html">瑞山西路美食街</a>
+                                    <a href="HeChuanNight5.html">嘉滨路美食街</a>
+                                    <a href="HeChuanNight6.html">缤果城</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="exp_a">旅游风向标<b></b><span class="Subtitle">News</span></a>
+                
+                
+                <div class="dropdown tour-down" style="display:none;">
+                    <div class="dropdown-warp clearfix">
+                        <div class="col-md-1">
+                            <div class="tour-news-photo">
+                                <h3>最新资讯</h3>
+                                <div class="tour-news-photo-list">
+                                    <!--<div class="tour-news-photo-line"><a href=""><img src="images/new.jpg" />
+                                    <div class="tour-mark">
+                                    <p>合川钓鱼城成功升为国家5A级景区</p>
+                                    <p class="t-time">2015-12-23</p>
+                                    </div></a></div>
+                                    
+                                    
+                                    <div class="tour-news-photo-line"><a href=""><img src="images/new.jpg" />
+                                    <div class="tour-mark">
+                                    <p>合川钓鱼城成功升为国家5A级景区</p>
+                                    <p class="t-time">2015-12-23</p>
+                                    </div></a></div>-->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-md-1">
+                            <div class="tour-news-all">
+                                <h3>合川旅游资讯</h3>
+                                 <div class="tour-news-all-list hczx">
+                                  <!--  
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="#">中国国家旅游局2014年数据统计公布</a></p>
+                                        <p class="t-time">2015-12-12</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="#">中国国家旅游局2014</a></p>
+                                        <p class="t-time">2015-12-12</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="#">中国国家旅游局年数据统计公布</a></p>
+                                        <p class="t-time">2015-12-12</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="#">中国国家旅年数据统计公布</a></p>
+                                        <p class="t-time">2015-12-12</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="#">中国国家旅游据统计公布</a></p>
+                                        <p class="t-time">2015-12-12</p>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        <div class="col-md-1 br0">
+                            <div class="tour-news-all">
+                                <h3>全球旅游资讯</h3>
+                                <div class="tour-news-all-list ">
+                                   
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="information_2.html">中国和阿根廷便利旅游人员签证协定将正式生效</a></p>
+                                        <p class="t-time">2015-06-17</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="information_3.html">在线旅游、旅行社纷纷亮招　掘金亲子游</a></p>
+                                        <p class="t-time">2015-06-17</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="information_4.html">第四届世界旅游经济论坛将于10月在澳门举行</a></p>
+                                        <p class="t-time">2015-06-17</p>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="exp_a">旅游小贴士<b></b>
+                <span class="Subtitle">Tips</span>
+                </a>
+                
+                <div class="dropdown Destination-down tip-down " style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-5">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>景区播报</h3>   
+                                <div class="water-list Boutique-list Scenic-report">
+                                    <div class="roll_list" id="roll_list1">
+                                        <ol>
+                                            <li>钓鱼城景区最大游客承载量<strong>73780</strong></li>
+                                            <li>来滩古镇景区最大游客承载量<strong>64970</strong></li>
+                                            <li>二佛寺景区最大游客承载量<strong>36000</strong></li>
+                                            <li>文峰古街播报最大游客承载量<strong>7000</strong></li>
+                                        </ol>
+                                    </div>
+                                    <div class="roll_list" id="roll_list2">
+                                         <ol>
+                                            <li>钓鱼城景区舒适游客承载量<strong>36890</strong></li>
+                                            <li>来滩古镇景区最舒适游客承载量<strong>32485</strong></li>
+                                            <li>二佛寺景区最舒适游客承载量<strong>18000</strong></li>
+                                            <li>文峰古街播报最舒适游客承载量<strong>35000</strong></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>当地交通</h3>   
+                                <div class="water-list Boutique-list">
+                                    <a href="TravelTips.html?tag=1">合川车站</a>
+                                    <a href="TravelTips.html?tag=2">合川火车站</a>
+                                    <a href="TravelTips.html?tag=3">出租车</a>
+                                    <a href="TravelTips.html?tag=4">公交车</a>
+                                </div>
+                             
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>当地天气</h3>   
+                               <div class="water-list Boutique-list">
+                                    <a href="http://www.weather.com.cn/weather1d/101040300.shtml" target="_blank">详情请点击查询</a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>投诉与建议</h3>  
+                                <div class="water-list Boutique-list">
+                                    <a href="Advice.html">投诉景区</a>
+                                    <a href="Advice.html">投诉工作人员</a>
+                                    <a href="Advice.html">投诉其他</a>
+                                    <a href="Advice.html">给我们建议</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </li>
+            <li>
+                
+               <a href="#" class="exp_a">活动参与<b></b>
+               <span class="Subtitle">Activities</span>
+               </a>
+                
+                <div class="dropdown Destination-down active-down " style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        
+                        <div class="col-md-3">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>进行中的活动</h3> 
+                                <div class="water-list Boutique-list huodonging">
+                                   <!-- <a href="#">激情漂流</a>
+                                    <a href="#">渔鱼之乐</a>
+                                    <a href="#">烧烤露营</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="col-md-3">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>往期活动回顾</h3> 
+                                <div class="water-list Boutique-list huodongend">
+                                    <!--<a href="#">激情漂流</a>
+                                    <a href="#">渔鱼之乐</a>
+                                    <a href="#">烧烤露营</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- content -->
+<div class="fd-product-warp">
+	<div class="fd-product-box">
+    	
+    	<div class="fd-product-desc clearfix">
+        	<div class="fd-product-banner fl">
+            	<div class="fd-product-banner-warp">
+                	<ul>
+                    	<!--<li><a href=""><img src="images/fdbanner.jpg" /><p class="fd-mark">商家名称</p></a></li>-->
+                    </ul>
+                    <a href="javascript:;" class="fd-prev"></a>
+                    <a href="javascript:;" class="fd-next"></a>
+                </div>
+                
+                <div class="user_info_box">
+                	<div class="user_info_line1 clearfix">
+                    	<div class="fl user_photo fl">
+                        	<strong><img src="images/user_pho.jpg" /></strong>
+                            <!--<span class="user_name">水一样的人</span>-->
+                        </div>
+                        <div class="user_say fl">
+                        	欢迎大家的光临，愿我们热忱的服务能让您满意！
+                        </div>
+                    </div>
+                    <div class="user_info_line2 clearfix">
+                    	
+                    </div>
+                </div>
+            </div>
+            <div class="fd-product-order fr">
+            	<div class="fd-product-order-box">
+                	
+                    <p class="hotel_notice_title">最低价格</p>
+                    <p class="hotel_fd_price fd-price"><span class="hotel_fd_price_box"><em>&yen;</em>120   <i>RMB</i></span> <span class="sta">起</span></p>
+                    <p class="hotel_order_line">预订热线</p>
+                    <p class="hotel_order_line_num">023-68000000</p>
+                    <div class="hotel_order_line"><a href="">预订</a></div>
+                </div>
+                
+                
+                <!-- 分享 -->
+                
+                <div class="share_tour">
+                	<p class="share_tour_tit">分享景点:</p>
+                    <div class="share_box">
+                    	<!-- JiaThis Button BEGIN -->
+                        <div class="jiathis_style_24x24">
+                            
+                            <a class="jiathis_button_weixin weixin"></a>
+                            <a class="jiathis_button_cqq qq"></a>
+                        </div>
+                        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                        <!-- JiaThis Button END -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+      
+        
+    </div>
+</div>
+
+
+<div class="content_descript_box">
+	<div class="content_warp">
+    	<div class="content_box">
+        	<h2><span>景点介绍</span></h2>
+            <div class="des_box">
+            	
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tour_Product">
+	<div class="tour_warp">
+    	<ol class="tour_warp_btn" id="tour_warp_btn">
+        	<li>地图展示</li>
+            <li>房型类别</li>
+            <li>酒店设施</li>
+            <li>如何到达</li>
+            <li>消费须知</li>
+            <li>同类酒店</li>
+            <li>评论</li>
+        </ol>
+        <div class="tour_box" id="tour_box">
+        	<!-- 地图 -->
+            <div class="tour_map" id="allmap" style="display:none">
+            	
+            </div>
+            <!-- 房型类别 -->
+            
+            <div class="goodfood" style="display:none;">
+            	<div class="goodfood_warp clearfix msJs">
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/goodfood.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">美食名称</a></dd>
+                        <dd class="ms_price"><span>20<em>&yen;</em><i>rmb</i></span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/goodfood.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">美食名称</a></dd>
+                        <dd class="ms_price"><span>20<em>&yen;</em><i>rmb</i></span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/goodfood2.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">美食名称</a></dd>
+                        <dd class="ms_price"><span>20<em>&yen;</em><i>rmb</i></span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/goodfood.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">美食名称</a></dd>
+                        <dd class="ms_price"><span>20<em>&yen;</em><i>rmb</i></span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/goodfood.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">美食名称</a></dd>
+                        <dd class="ms_price"><span>20<em>&yen;</em><i>rmb</i></span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/goodfood2.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">美食名称</a></dd>
+                        <dd class="ms_price"><span>20<em>&yen;</em><i>rmb</i></span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/goodfood.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">美食名称</a></dd>
+                        <dd class="ms_price"><span>20<em>&yen;</em><i>rmb</i></span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/goodfood.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">美食名称</a></dd>
+                        <dd class="ms_price"><span>20<em>&yen;</em><i>rmb</i></span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/goodfood2.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">美食名称</a></dd>
+                        <dd class="ms_price"><span>20<em>&yen;</em><i>rmb</i></span></dd>
+                    </dl>
+                </div>
+            </div>
+            <!-- 酒店设施 -->
+            
+            <div class="Facilities" style="display:none">
+            	<ul class="clearfix"> 
+                	<li>
+                    	<div class="fac_icon wifi"></div>
+                        <p>本店提供免费高速无线网络服务</p>
+                    </li>
+                    <li>
+                    	<div class="fac_icon water"></div>
+                        <p>提供热说</p>
+                    </li>
+                    <li>
+                    	<div class="fac_icon clock"></div>
+                        <p>叫醒服务</p>
+                    </li>
+                    <li>
+                    	<div class="fac_icon breakfast"></div>
+                        <p>免费早餐</p>
+                    </li>
+                    <li>
+                    	<div class="fac_icon zizhu"></div>
+                        <p>自助餐</p>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <!-- 如何到达  文字描述 -->
+            
+            <div class="how_Arrive how_Arrivejs" style="display:none;">
+            	钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）以东嘉陵江与渠江合流迂回而成的半岛之上，钓鱼山面积约2.5平方公里。山项靠南面上有一块巨石俯瞰嘉陵江，地质上属丹霞地貌。当地传说有一
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）以
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区
+            </div>
+            
+            <!-- 旅游须知 -->
+            <div class="how_Arrive" style="display:none;">
+            	钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）以东嘉陵江与渠江合流迂回而成的半岛之上，钓鱼山面积约2.5平方公里。山项靠南面上有一块巨石俯瞰嘉陵江，地质上属丹霞地貌。当地传说有一
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）以
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处于中央直辖市重庆合川区（与四川无关，百科名片错误）
+嘉陵江中之鱼，解救因天灾而遭受饥馑的合州百姓，因此被称作钓鱼山。钓鱼城古战场遗址位于钓鱼山上，至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、
+千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区
+            </div>
+            
+            <!-- 同类酒店 -->
+            <div class="goodfood" style="display:none;">
+            	<div class="goodfood_warp room clearfix">
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/room3.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">华地王朝华美达广场酒店</a></dd>
+                        <dd class="phone"><span>023-8611111</span></dd>
+                        <dd class="address"><span>华地王朝华美达广场酒店</span></dd>
+                    </dl>
+                     <dl class="fl">
+                        <dt><a href=""><img src="images/room.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">华地王朝华美达广场酒店</a></dd>
+                        <dd class="phone"><span>023-8611111</span></dd>
+                        <dd class="address"><span>华地王朝华美达广场酒店</span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/room2.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">华地王朝华美达广场酒店</a></dd>
+                        <dd class="phone"><span>023-8611111</span></dd>
+                        <dd class="address"><span>华地王朝华美达广场酒店</span></dd>
+                    </dl>
+                     <dl class="fl">
+                        <dt><a href=""><img src="images/room3.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">华地王朝华美达广场酒店</a></dd>
+                        <dd class="phone"><span>023-8611111</span></dd>
+                        <dd class="address"><span>华地王朝华美达广场酒店</span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/room2.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">华地王朝华美达广场酒店</a></dd>
+                        <dd class="phone"><span>023-8611111</span></dd>
+                        <dd class="address"><span>华地王朝华美达广场酒店</span></dd>
+                    </dl>
+                     <dl class="fl">
+                        <dt><a href=""><img src="images/room.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">华地王朝华美达广场酒店</a></dd>
+                        <dd class="phone"><span>023-8611111</span></dd>
+                        <dd class="address"><span>华地王朝华美达广场酒店</span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/room3.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">华地王朝华美达广场酒店</a></dd>
+                        <dd class="phone"><span>023-8611111</span></dd>
+                        <dd class="address"><span>华地王朝华美达广场酒店</span></dd>
+                    </dl>
+                     <dl class="fl">
+                        <dt><a href=""><img src="images/room2.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">华地王朝华美达广场酒店</a></dd>
+                        <dd class="phone"><span>023-8611111</span></dd>
+                        <dd class="address"><span>华地王朝华美达广场酒店</span></dd>
+                    </dl>
+                    <dl class="fl">
+                        <dt><a href=""><img src="images/room.jpg" /></a></dt>
+                        <dd class="ms_title"><a href="">华地王朝华美达广场酒店</a></dd>
+                        <dd class="phone"><span>023-8611111</span></dd>
+                        <dd class="address"><span>华地王朝华美达广场酒店</span></dd>
+                    </dl>
+                     
+                </div>
+            </div>
+            
+            <!-- 评论 -->
+            
+            <div class="Comment" style="display:none;">
+            	<div class="Comment_allNum">
+                	<span>评论量( 324 )</span>
+                </div>
+                <div class="Comment_box">
+                	<div class="Comment_box_warp">
+                    	<ul>
+                        	<!--<li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                            	<div class="Comment_user_box fl">
+                                	<p><a href=""><img src="images/count_user.jpg"/></a></p>
+                                    <p class="username"><a href="#">风一样的男子</a></p>
+                                </div>
+                                <div class="Comment_content fl">
+                                	<p>好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻1982年，钓鱼城被列为国家级风景名胜区。钓鱼山处
+景名胜区。钓鱼好想去啊！风景看起来很美！、清三代遗留的大量诗赋辞章、浮雕碑刻。</p>
+                                    <p class="push_time">2015-12-21</p>
+                                </div>
+                            </li>
+                            <li class="addMore"><a href="javascript:;">加载更多</a></li>-->
+                        </ul>
+                    </div>
+                    <div class="moveBra">
+                    	<div class="bar"></div>
+                    </div>
+                </div>
+                <div class="Comment_push">
+                	<input type="text" value="" placeholder="添加评论" class="text_box" />
+                    <input type="button" value="提交" class="sub_btn" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+<div class="s_ad">
+    <a href="http://www.cqsjjm.com/" target="_blank"><img src="images/s_ad3.jpg" /></a>
+</div>
+-->
+
+<!--footer-->
+<div class="hc-foot-warp">
+    <div class="hc-foot clearfix">
+        <div class="hc-foot-logo-warp fl">
+            <div class="blogo"><a href=""><img src="images/blogo.png" /></a></div>
+            <div class="government"><a href=""><img src="images/government.png" /></a></div>
+        </div>
+        <div class="fl hc-foot-attention">
+            <h2 class="foot-h2"><span>关注我们</span></h2>
+            <div class="weixinico">
+                <img src="images/weixin.png" />
+                <p>微信公众号</p>
+            </div>
+        </div>
+        
+         <div class="fl hc-foot-contact">
+            <h2 class="foot-h2"><span>联系我们</span></h2>
+            <div class="contact-info">
+                
+                <p class="mb8">
+                <span class="mb8">合川旅游局</span>
+                <br />
+                <span>023-42756727</span>
+                </p>
+                <p class="h10"></p>
+                <p>
+                <span class="mb8">重庆指间通信息技术有限公司</span>
+                <br />
+                <span>023-67887779</span>
+                </p>
+            </div>
+        </div>
+        
+        <div class="fl hc-foot-link">
+            <h2 class="foot-h2"><span>友情链接</span></h2>
+            <div class="link-info">
+                <p><a href="http://www.jrhcw.com">今日合川网</a></p>
+                <p><a href="http://www.cqta.gov.cn">重庆旅游政务网</a></p>
+                <p><a href="http://www.cqzjt.com">重庆指间通信息技术有限公司</a></p>
+            </div>
+        </div>
+        
+        <div class="fl hc-foot-APP">
+            <h2 class="foot-h2"><span>去合川APP下载</span></h2>
+            <div class="APP-info">
+                <p><a href="/app/"><img src="images/ios-App.png" /></a></p>
+                <p><a href="/app/"><img src="images/Android-App.png" /></a></p>
+            </div>
+        </div>
+        
+        <div class="fl hc-foot-t">
+            <h2 class="foot-h2"><span>技术支持</span></h2>
+            <div class="t-info">
+                <p>合川区政府网</p>
+                <p>重庆市旅游网</p>
+                <p>重庆指间通信息技术有限公司</p>
+            </div>
+        </div>
+    </div>
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/hoteldetail.js"></script>
+<script>
+
+var box='.Comment_box_warp';
+var bar='.Comment_box .moveBra';
+hc.effct.scrollBar(box,bar,30); // 最后一个参数控制滚动速度 单位px
+
+
+var obox=$('.fd-product-banner-warp');
+var aLi=$('.fd-product-banner-warp ul li');
+var prev=$('.fd-prev');
+var next=$('.fd-next');
+
+//banner(obox,aLi,prev,next,5000);
+
+</script>
+
+<script src="js/loadmark.js"></script>
+</body>
+</html>

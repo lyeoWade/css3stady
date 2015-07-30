@@ -1,0 +1,920 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/common.css">
+	<script src="js/jquery.js" type="text/javascript"></script>
+	
+	<script>
+		$(function(){	
+			
+			var aboutId = window.location.search;
+			//alert(aboutId);
+			if (aboutId) {
+				aboutId = aboutId.split("=")[1];
+			} else {
+				aboutId = 1;
+			}
+				
+			loadContent(aboutId);
+				
+			$(".infoRight").find("ul").children("li").each(function(index, elem){
+				$(elem).removeClass("hideLi");
+				if (index+1 == aboutId) {
+					$(elem).addClass("hideLi");					}	
+				})
+				
+				$(".infoRight").find("li").children("a").click(function(e){
+					e.preventDefault();
+					var id = $(this).attr("href").split("=")[1];
+					loadContent(id);
+					
+					$(".infoRight").find("li").removeClass("hideLi");
+					$(this).parent().addClass("hideLi");
+				});
+				
+				
+				
+				var flagUp = true;  //防止一直重复设置
+				var flagDown = false; 
+				var flag = true; 
+				var relativeTop = 0;
+				var offsetTop = $(".infoRight").offset().top-65;  //65为头部的高度，因头部也为fixed
+				$(window).bind("scroll", function(){
+					//console.log($(this).scrollTop());
+					if ( ($(this).scrollTop() >= offsetTop) && flagUp ) {
+						$(".infoRight").css("position", "fixed").css("top", "65px");
+						flagUp = false;
+						flagDown = true;
+			//			console.log("fixed");
+					} else if ( ($(this).scrollTop() < offsetTop) && flagDown ){
+						$(".infoRight").css("position", "static");
+						flagDown = false;
+						flagUp = true;
+			//			console.log("static");
+					}
+					
+				
+				});
+		
+			});
+			
+			function loadContent(id) {
+				if (id == 1) { //1.历史 2.军事 3.人文 4.教育 5.钓鱼城旅游文化节
+					fillingHistory();
+				} else if (id == 2) {
+					fillingWar();
+				} else if (id == 3) {
+					fillingCultural();	
+				} else if (id == 4) {
+					fillingEdu();	
+				} else if (id == 5) {
+					fillingActi();
+					hideRightList();
+				}
+			}
+			
+			function fillingHistory() {
+				window.title = "合川.历史";
+				$(".infoLeft").children("img").first().attr("src", "images/history.jpg");
+				$(".infoTitle").text("合川.历史");
+				$(".infoContent").empty();
+				$(".infoContent").append("<p>合川古名垫江(原为亵江，取嘉、涪二江在城北鸭咀的汇合之水如衣重叠之意，《汉书·地理志》误记为垫江并沿袭至今)，在巴人入川前是濮族人主要居住地，合川古城邑“巴子城”(今城区铜梁山下)曾是巴国别都。公元前314年始设垫江县，县域辖今合川、武胜、铜梁、安岳、岳池县地，隶属巴郡，治所在今合川。南朝元嘉年代升垫江县为宕渠郡，西魏恭帝三年(556年)改为合州，辖垫江、清居、东遂宁、怀化4郡及郡属石镜(合川)、汉初(武胜)、清居(南充市南)、方义(遂宁城区)、德阳(遂宁市中区东南)、长江(蓬溪)、始兴潼南7县。隋开皇十八年(598)年，合州更名涪州，大业三年(607年)又改名涪陵郡，唐武德元年(618年)复名合州。宋淳祜三年(1234年)为抗蒙兵，在州城之东5公里的钓鱼山筑新城，州治所迁居钓鱼城。元至元二十年(1283)年返回原址。以后，合州辖县陆续划出，至清雍正六年(1728年)成为不再辖县的单州，属重庆府管辖。民国二年(1913年)，合州改名合川县。</p>")
+					.append("<p>1950年，合川属川东行署壁山专员公署辖。1951年，壁山专区更名江津专区，合川属江津专区辖。</p>")
+					.append("<p>1952年4月划出合川县城关区增设合川市。</p>")
+					.append("<p>1958年1月，经国务院批复，合川市建置撤销，原合川市所辖地域改为合川县城关镇。</p>")
+					.append("<p>1983年3月，重庆市和永川地区合并，合川县属重庆市辖。</p>")
+					.append("<p>1992年8月4日，民政部(民行批【1992】89号)批复同意撤销合川县，设立合川市。</p>")
+					.append("<p>2000年6月26日，重庆市人民政府(渝府【2000】131号)批准同意合川市人民政府驻地由合阳城苏家街31号迁至南津街中南村。</p>")
+					.append("<h3>历史沿革</h3>")
+					.append("<p>2000年，合川市辖6个街道(合阳城、高石坎、南津街、凉亭子、东津沱、钓鱼城)、50个镇(盐井、草街、滩子、十塘、官渡、双凤、狮滩、福寿、云门、天星、高龙、大石、尖山、利泽、古楼、铜溪、油桥、张桥、渭沱、皂角、太和、龙井、隆兴、木莲、佛盐、三庙、七间、炉山、合隆、燕窝、二郎、龙凤、钱塘、沙鱼、金子、泥溪、龙市、涞滩、码头、肖家、双龙湖、渭溪、黄土、香龙、小沔、宝华、三汇、清平、土场、保合)、8个乡(九岭、小河、凤山、赤水、会龙、佛门、响水、大沔)。根据第五次人口普查数据：全市总人口1420520人。</p>")
+					.append("<p>2001年6月5日，重庆市人民政府(渝府【2001】96号)同意合川市将原有的50个镇、8个乡、6个街道办事处调整为36个镇、3个街道办事处。调整后，乡镇平均面积由调整前的37.7平方千米扩大至60.7平方千米，乡镇平均人口由调整前的2.2万人增至3.6万人。</p>")
+					.append("<p>2002年，合川市辖3个街道办事处、36个镇，95个居委会、529个村委会。年末户籍总人口150.99万人，其中非农业人口26.32万人。</p>")
+					.append("<p>2005年4月19日，重庆市人民政府《关于合川市行政区划调整方案的批复》(渝府【2005】77号)同意合川市将36个镇、3个街道办事处调整为27个镇、3个街道办事处。</p>")
+					.append("<p>2006年2月23日，根据重庆市人民政府《关于合川市部分村跨镇调整的批复》(渝府【2006】34号)又对合川市部分村进行了跨镇调整。</p>")
+					.append("<p>2006年10月22日，国务院(国函【2006】110号)批准：撤销合川市，设立重庆市合川区。以原合川市的行政区域为合川区的行政区域，合川区人民政府驻南津街道。</p>");
+			}
+			
+			function fillingWar() {
+				window.title = "合川.军事";
+				$(".infoLeft").children("img").first().attr("src", "images/war.jpg");
+				$(".infoTitle").text("合川.军事");
+				$(".infoContent").empty();
+				$(".infoContent").append("<p>南宋淳二年(1242年)，四川安抚制置史兼重庆知府余玠始筑钓鱼城。1258年，蒙哥大汗挟西征欧亚非40余国的威势，分兵三路伐宋。蒙哥亲率的一路军马进犯四川，于次年2月兵临合川钓鱼城。蒙哥铁骑东征西讨，所向披靡,然而在钓鱼城主将王坚与副将张珏的顽强抗击下，却不能越雷池半步。7月，蒙哥被城上火炮击伤，后逝于温泉寺。钓鱼城保卫战长逾36年，写下了中外战争史上罕见的以弱胜强的战例，钓鱼城因此被欧洲人誉为“东方麦加城”、“上帝折鞭处”。</p>")
+					.append("<p>钓鱼城古战场遗址至今保存完好。主要景观有城门、城墙、皇宫、武道衙门、步军营、水军码头等遗址，有钓鱼台、护国寺、悬佛寺、千佛石窟、皇洞、天泉洞、飞檐洞等名胜古迹，还有元、明、清三代遗留的大量诗赋辞章、浮雕碑刻。1982年，钓鱼城被列为国家级风景名胜区。</p>")
+					.append("<p>在中国人民革命军事博物馆古代战争馆里有一个展示公元13世纪发生的一场著名战役的沙盘模型,它就是--钓鱼城古战场。想当年钓鱼城作为山城防御体系的典型代表，在冷兵器时代，充分显示了其防御作用，它成为当时蒙军难以攻克的堡垒。</p>")
+					.append("<p>从公元1243年到1279年，南宋合州军民在守将王坚、张珏的率领下，凭藉钓鱼城天险，“春则出屯田野，以耕以耘;秋则运粮运薪，以战以守。”而蒙哥汗(元宪宗)、总帅汪德臣、东川统军合剌、四川总帅汪惟正等80多名叱咤风云的蒙、元将领，视钓鱼城为“弹丸”之地，长期围城强攻。双方于此殊死搏斗，浴血奋战，历经大小战斗200余次，共同创造了钓鱼城36年攻防战争这一古今中外战争史上罕见的奇迹。并以“蒙哥大汗战死钓鱼城下，蒙古汗国不得不从欧亚战场撤军”的史实而闻名世界。</p>");
+			}
+			
+			function fillingCultural() {
+				window.title = "合川.人文";
+				$(".infoLeft").children("img").first().attr("src", "images/cultural.jpg");
+				$(".infoTitle").text("合川.人文");
+				$(".infoContent").empty();
+				$(".infoContent").append("<p>合川人文历史厚重。是巴文化发源地之一，建制历史2300多年。理学家周敦颐、“天下廉吏第一”于成龙曾在合为官，人民教育家陶行知、无产阶级革命家赵君陶曾在合创业。合川孕育了川东蚕桑之父张森楷、被毛主席誉为“中国民族工业四个不能忘记”之一的卢作孚、新中国第一位少年英雄刘文学等杰出人物。有国家重点风景名胜区、全国重点文物保护单位—钓鱼城，国家级重点文物保护单位、全国首批十大历史文化名镇—涞滩古镇。</p>")
+					.append("<p>合川文化积淀厚重，人杰地灵，众多名人大事远扬海内外。</p>")
+					.append("<p>我国四大实业家之一、驰名中外的卢作孚先生在合川创办了民生实业公司;有国家重点风景名胜区、全国重点文物保护单位钓鱼城古战场遗址(重庆市唯一的“双国保”)，被誉为“上帝折鞭处”，素有“东方麦加城”之称。</p>")
+					.append("<p>市内有省级文物保护单位、全国保存最完整的涞滩镇古瓮城遗址，镇内二佛寺保存着全国最大的禅宗石刻摩岩造像群，是佛教禅宗文化胜地;有被誉为教育圣地的育才学校旧址古圣寺，伟大的人民教育家陶行知曾在合川草街创办育才学校达七年之久，原全国人大委员长李鹏等曾在这里求学，著名的专家学者如翦伯赞、贺纱汀、戴爱莲等曾在这里执教。</p>")
+					.append("<p>老一辈无产阶级革命家赵君陶曾在士场创办战时儿童保育院;历史文化名人如周敦颐要在合川任通判;被清朝皇帝誉为“清官第一”、“一代廉吏”的于成龙曾任合州知州;还有创建四川蚕桑公社的著名史学家张森楷;诞生了新中国第一位少年英雄刘文学。</p>");
+			}
+			
+			function fillingEdu() {
+				window.title = "合川.教育";
+				$(".infoLeft").children("img").first().attr("src", "images/edu.jpg");
+				$(".infoTitle").text("合川.教育");
+				$(".infoContent").empty();
+				$(".infoContent").append("<p>合川自古人杰地灵，民尚习文，兴学重教之风源远流长。城东嘉陵江岸学士山上，有北宋理学家周敦颐讲学之所养心堂。1939年，伟大的人民教育家陶行知先生在草街古圣寺创办了蜚声中外的育才学校。建校一个多世纪的合川中学，其前身更可上溯到明嘉靖十年的合宗书院。</p>")
+					.append("<p>随着中国教育事业的发展，特别是高等教育事业近年来的跳跃式发展，合川迎来加快发展本地教育事业的大好良机。由于合川独特的人文地理环境和便利的交通条件，重庆市各高校纷纷选址合川，兴建自己的扩张发展基地。</p>")
+					.append("<p>现在，合川高校林立，不仅拥有水产职业学院、城市职业学院、民生职业学院、西南大学影视学院等4所民办高校，还拥有重庆工商大学派斯学院、西南大学育才学院、重庆师范大学涉外商贸学院3所独立学院，在校生突破3万人。然而，7年前，该区尚无一所高校。但合川坚定地认为：一个没有大学的城市，将因缺乏人文支撑和人才支撑，难以真正形成气候，因此，合川要更好地发展，必须拥有高校。</p>")
+					.append("<p>1999年，一位匈牙利华裔来渝与重庆工商大学洽谈合作办学之事，希望利用工商大学的品牌和管理模式，联办一所民办学院。合川了解到这一情况后，主动找到双方作“撮合”工作，并许诺将合川中师校舍免费供其使用50年。很快，重庆工商大学派斯学院成立，成为西南地区首个独立学院。</p>")
+					.append("<p>由于该校采用的是母体高校的师资与管理模式，颁发的是母体高校的毕业证和学位证，办学质量有保证，因此得到了社会的认可，招生数量连年翻番。之后，合川按照这一模式，积极“撮合”高校与投资方联合前往合川办学，并出台系列优惠政策促进引进工作，西南大学育才学院、重庆师范大学涉外商贸学院等6所独立民办高校就这样先后在合川问世。</p>")
+					.append("<p>这些独立民办高校的进入，推动了该区经济的快速发展。据了解，这些高校在合川的直接投资已超过6亿元，由此新增的就业岗位达到8000个。同时，这些高校还极大地推动了该区建筑业、房地产业、商业的发展。目前，围绕该区城区北部的各高校，已经形成了一个总面积达数平方公里的繁华新城区。</p>")
+					.append("<p>今后，合川准备进一步加大教育资金的投入，深化教育人事制度改革，加大名师名校的培养力度，优化调整教育布局，积极推进教育改革和创新。一方面，继续抓好高校教育，在扩大现有高校规模、提高办学质量的同时，采取更加优惠的政策和更加强有力的措施，争取更多的高校或高校的二级学院落户合川，争取到2010年，使高校在校生人数突破10万人;另一方面，抓好中小学教育，搞好中等职业教育，改善教学的软硬件环境，提高教学质量，提高升学率，为社会为国家培养更多的合格的劳动者，双管齐下，推动教育事业在合川得到大发展，在重庆北部形成一个新的教育高地。</p>");
+			}
+			
+			function fillingActi() {
+				window.title = "合川钓鱼城旅游文化节";
+				$(".infoLeft").children("img").first().attr("src", "images/acti.jpg");
+				$(".infoTitle").text("2015钓鱼城旅游文化节6月18号启幕 多项活动等你来参加");
+				$(".infoContent").empty();
+				$(".infoContent").append("<p>合川6月有丰富多彩的好耍、好看、好吃的活动。6月18日，涵盖14项活动的2015钓鱼城旅游文化节隆重启幕。届时，各大景区都将向游客推出优惠政策。</p>")
+					.append("<p>在节庆期间，合川推出了开幕式、音乐啤酒节、护国寺祈福法会、钓鱼城登山邀请赛、钓鱼城国际学术研讨会、畅游三江（嘉陵江、渠江、涪江）邀请赛鹫峰峡漂流勇士争夺赛等，还有百年合川桃片工艺现场制作。重庆自驾游协会将招募300多辆自驾车赴钓鱼城、涞滩古镇等。</p>")
+					.append("<h3>线下活动日程安排：</h3>")
+					.append("<p>6月18日19:30 钓鱼城旅游节、啤酒节、钓鱼城申遗启动仪式在文峰街会江楼广场。</p>")
+					.append("<p>6月18日18:旅游招商暨旅游客商踩线推介会在文峰街举行。</p>")
+					.append("<p>6月18日至27日 钓鱼城护国寺举行祈福法会，同时举行涞滩古镇民俗文化活动和鹫峰峡漂流大赛。</p>")
+					.append("<p>6月1日至10月8日 奥普乐欢乐水世界休闲娱乐体验活动，在钓鱼城奇胜门游客中心举行。</p>")
+					.append("<p>6月19日08:30 畅游三江邀请赛在城区三江交汇处举行。</p>")
+					.append("<p>6月21日08:00 少儿“我心中的钓鱼城”绘画比赛在钓鱼城举行。</p>")
+					.append("<p>6月24日08:—15:30 第二届“钓鱼城”杯钓鱼赛在大石嘉隆西海举行。</p>")
+					.append("<p>6月26日09:00钓鱼城登山赛。</p>")
+					.append("<p>6月1日至30日 合川乡村旅游夏季体验活动。</p>")
+					.append("<p>7月21日至22日 钓鱼城国际学术研讨会在恭州大酒店举行。</p>")
+					.append("<p>6月27日19:30 旅游节闭幕仪式。</p>")
+					.append("<h3>线上活动安排：</h3>")
+					.append("<p>扫二维码下载APP参与合川旅游节图文直播活动</p>")
+					.append("<p>活动一：6月18日14：00-22：00参与到直播活动有奖问答、幸运大抽奖活动，可获得免费啤酒券。</p>")
+					.append("<p>活动二：6月18日—6月27每日进行免费秒杀啤酒券活动，每轮每个用户限抢一次。</p>")
+					.append("<p>活动三：6月18日-6月22日景区零元抢购，代金券抢购活动，抢到的用户秒杀结束后可凭姓名和电话到景区体验。</p>");
+					
+			}
+			
+			function hideRightList() {
+				$(".infoRight").css("display", "none");
+				$(".infoLeft").css("margin-left", "195px");
+			}
+	
+	</script>
+	
+	</head>
+	<body>
+	<!-- head -->
+<div class="head-warp" style="position:relative; z-index:20;">
+	<div class="head-box">
+    	<div class="head-top clearfix">
+        	<div class="logo fl">
+            	<a href="/"><img src="images/logo.png" /></a>
+            </div>
+            <div class="user-box fr clearfix">
+            	<div class="search-ico fl"><a href="search.html"></a></div>
+                <div class="fl logoned">
+                	<!-- 登陆成功 
+                	<span>Elaborate </span>
+                    <a href="">[退出]</a>-->
+                    
+                    <!-- 未登录 -->
+            <span id="qqLoginBtn"></span>
+                <script type="text/javascript">
+                   //调用QC.Login方法，指定btnId参数将按钮绑定在容器节点中
+                   QC.Login({
+                       //btnId：插入按钮的节点id，必选
+                       btnId:"qqLoginBtn",   
+                       scope:"all",
+                       
+                       size: "B_S"
+                   }, function(reqData, opts){//登录成功
+                       //根据返回数据，更换按钮显示状态方法
+                       var dom = document.getElementById(opts['btnId']),
+                       _logoutTemplate=[
+                            //头像
+                            '<span><img src="{figureurl}" class="{size_key}"/></span>',
+                            //昵称
+                            '<span>{nickname}</span>',
+                            //退出
+                            '<span><a href="javascript:QC.Login.signOut();">退出</a></span>'    
+                       ].join("");
+                       dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
+                           nickname : QC.String.escHTML(reqData.nickname), //做xss过滤
+                           figureurl : reqData.figureurl
+                       }));
+                   }, function(opts){//注销成功
+                         alert('QQ登录 注销成功');
+                   }
+                );
+                </script>
+                                   <!--
+                    <a href="" class="weixin"></a>
+                   --> 
+                   
+                </div>
+
+               <!-- <a href="">我的计划</a>-->
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+<div class="nav_warp" style="position:relative; z-index:10000;">
+    <div style="width:100%;height:48px;display:none" id="pos"></div>
+    <div class="head-nav" id="nav_bar">
+        <ul class="nav">
+            <li class="homeTip"><a href="/">&nbsp;</a></li>
+            <li>
+                
+                <a href="#" class="exp_a">目的地<b></b><span class="Subtitle">Destination</span></a>
+                <div class="dropdown Destination-down " style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-2">
+                            <div class="show-down-warp">
+                            
+                                <h3>您可能想去</h3>
+                                <div class="show-news-list youwantJs">
+                                    
+                                    <!--<div class="show-news-line"><a href="">
+                                    <img src="images/add2.jpg" />
+                                    <div class="show-mark">合川钓鱼城成景区</div>
+                                    </a></div>
+                                    
+                                    
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/add1.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>
+                                    
+                                     <div class="show-news-line"><a href="">
+                                     <img src="images/add3.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>-->
+                                 </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2 quneiJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>区内</h3>	
+                                <div class="water-list Boutique-list ">
+                                    
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                        <div class="col-md-2 jinjiaoJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>近郊</h3>	
+                                <div class="water-list Boutique-list">
+                                    
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                        <div class="col-md-2 yuanjiaoJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>远郊</h3>	
+                                <div class="water-list Boutique-list">
+                                    <!--<a href="#">白鹤湖风景区</a>
+                                    <a href="#">龙多山风景区</a>
+                                    <a href="#">天生寨风景区</a>
+                                    <a href="#">卢作孚故里</a>
+                                    <a href="#">张森楷故居及陵园</a>
+                                    <a href="#">三汇石林</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                 <a href="#" class="exp_a">精彩&bull;发现<b></b><span class="Subtitle">Travel line</span></a>
+              	
+                
+                <div class="dropdown show-down" style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-2">
+                            <div class="show-down-warp">
+                                
+                                <h3>当季主打</h3>
+                                <div class="show-news-list zdJs">
+                                    
+                                    <!--<div class="show-news-line"><a href="">
+                                    <img src="images/add1.jpg" />
+                                    <div class="show-mark">合川钓鱼城成景区</div>
+                                    </a></div>
+                                    
+                                    
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/add2.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>
+                                    
+                                     <div class="show-news-line"><a href="">
+                                     <img src="images/add3.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>-->
+                                 </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-2 jpyJs">
+                            <div class="Boutique-down-warp">
+                                <h3>精品之游</h3>	
+                                <div class="Boutique-list">
+                                    <!--<a href="#">人文春色一日游</a>
+                                    <a href="#">人文风情一日游</a>
+                                    <a href="#">山水佛缘一日游</a>
+                                    <a href="#">崇文重教一日游</a>
+                                    <a href="#">健康休闲二日游</a>
+                                    <a href="#">祈福养身二日游</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                        <div class="col-md-2 qsyJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>亲水之旅</h3>	
+                                <div class="water-list Boutique-list">
+                                    <!--<a href="#">激情漂流</a>
+                                    <a href="#">渔鱼之乐</a>
+                                    <a href="#">烧烤露营</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                        <div class="col-md-2 xcyJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>乡村之旅</h3>	
+                                <div class="water-list Boutique-list">
+                                    <!--<a href="#">激情漂流</a>
+                                    <a href="#">渔鱼之乐</a>
+                                    <a href="#">烧烤露营</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                        <div class="col-md-2 jhyJs">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>节会之游</h3>	
+                                <div class="water-list Boutique-list">
+                                   <!-- <a href="#">激情漂流</a>
+                                    <a href="#">渔鱼之乐</a>
+                                    <a href="#">烧烤露营</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><span>换一换</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="exp_a">美食&bull;推荐<b></b><span class="Subtitle">Cate</span></a>
+              	
+                
+                <div class="dropdown show-down" style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-2">
+                            <div class="show-down-warp">
+                                
+                                <h3>人气最高</h3>
+                                <div class="show-news-list rqzg">
+                                    
+                                    <!--<div class="show-news-line"><a href="">
+                                    <img src="images/add1.jpg" />
+                                    <div class="show-mark">合川钓鱼城成景区</div>
+                                    </a></div>
+                                    
+                                    
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/add2.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>
+                                    
+                                     <div class="show-news-line"><a href="">
+                                     <img src="images/add3.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川钓鱼城成景区</p>
+                                    </div></a></div>-->
+                                 </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="Boutique-down-warp">
+                                <h3>达人美食推荐</h3>	
+                                <div class="Boutique-list Recommend-list ">
+                                   <a href="recommend.html">合川非吃不可(第一期)</a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>合川非吃不可</h3>	
+                                <div class="water-list Boutique-list fcbk">
+                                    <!--<a href="#">三江鱼</a>
+                                    <a href="#">合川肉片</a>
+                                    <a href="#">合川桃片</a>
+                                    <a href="#">鸡肉抄手</a>
+                                    <a href="#">合川米线</a>-->
+                                </div>
+                               
+                            </div>
+                             <div class="Recommend-btn"><a href=""></a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>顶级私房菜</h3>	
+                                <div class="water-list Boutique-list sssfc">
+                                    <a href="#">宴臻私家菜   </a>
+                                    
+                                </div>
+                            </div>
+                             <div class="Recommend-btn"><a href=""></a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>优质美食商家</h3>	
+                                <div class="water-list Boutique-list bizNav">
+                                    
+                                </div>
+                            </div>
+                             <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="exp_a">休闲&bull;住宿<b></b><span class="Subtitle">Hotels</span></a>
+              	
+                
+                <div class="dropdown Destination-down stay-down " style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-2">
+                            <div class="show-down-warp">
+                            
+                                <h3>特惠精选</h3>
+                                <div class="show-news-list thjxJs">
+                                    
+                                    <!--<div class="show-news-line"><a href="">
+                                    <img src="images/ss1.jpg" />
+                                    <div class="show-mark">华地王朝酒店</div>
+                                    </a></div>
+                                    
+                                    
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/ss2.jpg" />
+                                    <div class="show-mark">
+                                    <p>金瓯商务酒店</p>
+                                    </div></a></div>
+                                    
+                                     <div class="show-news-line"><a href="">
+                                     <img src="images/ss3.jpg" />
+                                    <div class="show-mark">
+                                    <p>汉庭快捷酒店</p>
+                                    </div></a></div>-->
+                                 </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>商务星级酒店</h3>	
+                                <div class="water-list Boutique-list shangwuji ">
+                                    <!--<a href="#">恭州大酒店</a>
+                                    <a href="#">帝臻酒店</a>
+                                    <a href="#">锦城宾馆</a>
+                                    <a href="#">江城明珠大酒店  </a>-->
+                                  
+                                </div>
+                            </div>
+                           <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>主题型酒店</h3>	
+                                <div class="water-list Boutique-list zhutixing ">
+                                   <!-- <a href="#">合川酒店</a>-->
+                                   
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>经济型酒店</h3>	
+                                <div class="water-list Boutique-list jingjixing">
+                                    <!--<a href="#">汉庭连锁酒店</a>
+                                    <a href="#">潮曼连锁酒店</a>
+                                    <a href="#">七天连锁酒店</a>
+                                    <a href="#">如家连锁酒店</a>-->
+                                </div>
+                            </div>
+                            <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>度假型酒店</h3>	
+                                <div class="water-list Boutique-list qita">
+                                   <!-- <a href="#">狮子山盟军大本营</a>
+                                    <a href="#">蓬莱客栈</a>
+                                    <a href="#">石泉山庄</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                           <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="exp_a">夜色&bull;合川<b></b><span class="Subtitle">Night Market</span></a>
+              	
+                
+                <div class="dropdown Destination-down light-down " style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-2">
+                            <div class="show-down-warp">
+                            
+                                <h3>夜猫子必去地儿</h3>
+                                <div class="show-news-list yemaozibiquzhidi">
+                                   <!-- 
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/yy1.jpg" />
+                                    <div class="show-mark">天伦王朝KTV</div>
+                                    </a></div>
+                                    
+                                    
+                                    <div class="show-news-line"><a href="">
+                                    <img src="images/yy2.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川烧烤</p>
+                                    </div></a></div>
+                                    
+                                     <div class="show-news-line"><a href="">
+                                     <img src="images/yy3.jpg" />
+                                    <div class="show-mark">
+                                    <p>合川绿叶酒吧</p>
+                                    </div></a></div>-->
+                                 </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>休闲娱乐</h3>	
+                                <div class="water-list Boutique-list xiuxianyule">
+                                    <!--<a href="#">量贩KTV</a>
+                                    <a href="#">酒吧</a>
+                                    <a href="#">棋牌娱乐</a>
+                                    <a href="#">咖啡</a>
+                                    <a href="#">洗浴</a>
+                                    <a href="#">运动健身</a>-->
+                                </div>
+                            </div>
+                             <div class="Recommend-btn"><a href="food.html">查看更多</a></div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>美味夜宵</h3>	
+                                <div class="water-list Boutique-list meiweixiaoye">
+                                    加载中。。。
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>美味街区</h3>	
+                                <div class="water-list Boutique-list">
+                                    <a href="HeChuanNight1.html">南屏晚钟风情</a>
+                                    <a href="HeChuanNight2.html">金马美食街</a>
+                                    <a href="HeChuanNight3.html">文峰古街</a>
+                                    <a href="HeChuanNight4.html">瑞山西路美食街</a>
+                                    <a href="HeChuanNight5.html">嘉滨路美食街</a>
+                                    <a href="HeChuanNight6.html">缤果城</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="exp_a">旅游风向标<b></b><span class="Subtitle">News</span></a>
+              	
+                
+                <div class="dropdown tour-down" style="display:none;">
+                    <div class="dropdown-warp clearfix">
+                        <div class="col-md-1">
+                            <div class="tour-news-photo">
+                                <h3>最新资讯</h3>
+                                <div class="tour-news-photo-list">
+                                    <!--<div class="tour-news-photo-line"><a href=""><img src="images/new.jpg" />
+                                    <div class="tour-mark">
+                                    <p>合川钓鱼城成功升为国家5A级景区</p>
+                                    <p class="t-time">2015-12-23</p>
+                                    </div></a></div>
+                                    
+                                    
+                                    <div class="tour-news-photo-line"><a href=""><img src="images/new.jpg" />
+                                    <div class="tour-mark">
+                                    <p>合川钓鱼城成功升为国家5A级景区</p>
+                                    <p class="t-time">2015-12-23</p>
+                                    </div></a></div>-->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-md-1">
+                            <div class="tour-news-all">
+                                <h3>合川旅游资讯</h3>
+                                 <div class="tour-news-all-list hczx">
+                                  <!--  
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="#">中国国家旅游局2014年数据统计公布</a></p>
+                                        <p class="t-time">2015-12-12</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="#">中国国家旅游局2014</a></p>
+                                        <p class="t-time">2015-12-12</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="#">中国国家旅游局年数据统计公布</a></p>
+                                        <p class="t-time">2015-12-12</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="#">中国国家旅年数据统计公布</a></p>
+                                        <p class="t-time">2015-12-12</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="#">中国国家旅游据统计公布</a></p>
+                                        <p class="t-time">2015-12-12</p>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        <div class="col-md-1 br0">
+                            <div class="tour-news-all">
+                                <h3>全球旅游资讯</h3>
+                                <div class="tour-news-all-list ">
+                                   
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="information_2.html">中国和阿根廷便利旅游人员签证协定将正式生效</a></p>
+                                        <p class="t-time">2015-06-17</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="information_3.html">在线旅游、旅行社纷纷亮招　掘金亲子游</a></p>
+                                        <p class="t-time">2015-06-17</p>
+                                    </div>
+                                    
+                                    <div class="tour-news-all-list-line">
+                                        <p><a href="information_4.html">第四届世界旅游经济论坛将于10月在澳门举行</a></p>
+                                        <p class="t-time">2015-06-17</p>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="exp_a">旅游小贴士<b></b>
+                <span class="Subtitle">Tips</span>
+                </a>
+              	
+                <div class="dropdown Destination-down tip-down " style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        <div class="col-md-5">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>景区播报</h3>	
+                                <div class="water-list Boutique-list Scenic-report">
+                                    <div class="roll_list" id="roll_list1">
+                                        <ol>
+                                            <li>钓鱼城景区最大游客承载量<strong>73780</strong></li>
+                                            <li>来滩古镇景区最大游客承载量<strong>64970</strong></li>
+                                            <li>二佛寺景区最大游客承载量<strong>36000</strong></li>
+                                            <li>文峰古街播报最大游客承载量<strong>7000</strong></li>
+                                        </ol>
+                                    </div>
+                                    <div class="roll_list" id="roll_list2">
+                                         <ol>
+                                            <li>钓鱼城景区舒适游客承载量<strong>36890</strong></li>
+                                            <li>来滩古镇景区最舒适游客承载量<strong>32485</strong></li>
+                                            <li>二佛寺景区最舒适游客承载量<strong>18000</strong></li>
+                                            <li>文峰古街播报最舒适游客承载量<strong>35000</strong></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>当地交通</h3>	
+                                <div class="water-list Boutique-list">
+                                    <a href="TravelTips.html?tag=1">合川车站</a>
+                                    <a href="TravelTips.html?tag=2">合川火车站</a>
+                                    <a href="TravelTips.html?tag=3">出租车</a>
+                                    <a href="TravelTips.html?tag=4">公交车</a>
+                                </div>
+                             
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>当地天气</h3>	
+                                <div class="water-list Boutique-list">
+                                    <a href="http://www.weather.com.cn/weather1d/101040300.shtml" target="_blank">详情请点击查询</a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-2">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>投诉与建议</h3>	
+                                <div class="water-list Boutique-list">
+                                    <a href="Advice.html">投诉景区</a>
+                                    <a href="Advice.html">投诉工作人员</a>
+                                    <a href="Advice.html">投诉其他</a>
+                                    <a href="Advice.html">给我们建议</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </li>
+            <li>
+                
+               <a href="#" class="exp_a">活动参与<b></b>
+               <span class="Subtitle">Activities</span>
+               </a>
+              	
+                <div class="dropdown Destination-down active-down " style="display:none;">
+                    <div class="dropdown-warp dropdown-warp-show clearfix">
+                        
+                        <div class="col-md-3">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>进行中的活动</h3>	
+                                <div class="water-list Boutique-list huodonging">
+                                   <!-- <a href="#">激情漂流</a>
+                                    <a href="#">渔鱼之乐</a>
+                                    <a href="#">烧烤露营</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="col-md-3">
+                            <div class="water-down-warp Boutique-down-warp">
+                                <h3>往期活动回顾</h3>	
+                                <div class="water-list Boutique-list huodongend">
+                                    <!--<a href="#">激情漂流</a>
+                                    <a href="#">渔鱼之乐</a>
+                                    <a href="#">烧烤露营</a>
+                                    <a href="#">画舫游船游三江</a>
+                                    <a href="#">三江坝坝茶</a>-->
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+		<div id="infoWrapper" class="fixedWidth clearfix">
+			<div class="infoInner">
+				<div class="infoLeft">
+					<img src="" class="themeImg"/> 
+					<p class="infoTitle"></p>
+					<p class="infoDate" style="display:none;"></p>
+					<div class="infoContent">
+					</div>
+				</div>
+				<div class="infoRight">
+					<p>关于合川</p>
+					<ul>
+						<li><a href="aboutHC.html?id=1">合川.历史</a></li>
+						<li><a href="aboutHC.html?id=2">合川.军事</a></li>
+						<li><a href="aboutHC.html?id=3">合川.人文</a></li>
+						<li><a href="aboutHC.html?id=4">合川.教育</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+<div class="s_ad">
+    <a href="javascript:;" target="_blank"><img src="images/three.png" /></a>
+</div>
+
+<!--footer-->
+<div class="hc-foot-warp">
+	<div class="hc-foot clearfix">
+    	<div class="hc-foot-logo-warp fl">
+        	<div class="blogo"><a href=""><img src="images/blogo.png" /></a></div>
+            <div class="government"><a href=""><img src="images/government.png" /></a></div>
+        </div>
+        <div class="fl hc-foot-attention">
+        	<h2 class="foot-h2"><span>关注我们</span></h2>
+            <div class="weixinico">
+            	<img src="images/weixin.png" />
+                <p>微信公众号</p>
+            </div>
+        </div>
+        
+         <div class="fl hc-foot-contact">
+        	<h2 class="foot-h2"><span>联系我们</span></h2>
+            <div class="contact-info">
+            	
+                <p class="mb8">
+                <span class="mb8">合川旅游局</span>
+                <br />
+                <span>023-42756727</span>
+                </p>
+                <p class="h10"></p>
+                <p>
+                <span class="mb8">重庆指间通信息技术有限公司</span>
+                <br />
+                <span>023-67887779</span>
+                </p>
+            </div>
+        </div>
+        
+        <div class="fl hc-foot-link">
+        	<h2 class="foot-h2"><span>友情链接</span></h2>
+            <div class="link-info">
+            	<p><a href="http://www.jrhcw.com">今日合川网</a></p>
+                <p><a href="http://www.cqta.gov.cn">重庆旅游政务网</a></p>
+                <p><a href="http://www.cqzjt.com">重庆指间通信息技术有限公司</a></p>
+            </div>
+        </div>
+        
+        <div class="fl hc-foot-APP">
+        	<h2 class="foot-h2"><span>去合川APP下载</span></h2>
+            <div class="APP-info">
+            	<p><a href="/app/"><img src="images/ios-App.png" /></a></p>
+                <p><a href="/app/"><img src="images/Android-App.png" /></a></p>
+            </div>
+        </div>
+        
+        <div class="fl hc-foot-t">
+        	<h2 class="foot-h2"><span>技术支持</span></h2>
+            <div class="t-info">
+            	<p>合川区政府网</p>
+                <p>重庆市旅游网</p>
+                <p>重庆指间通信息技术有限公司</p>
+            </div>
+        </div>
+    </div>
+	<script src="js/common.js"></script>
+  </body>
+</html>

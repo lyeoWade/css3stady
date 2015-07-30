@@ -1,0 +1,246 @@
+/* LESS Document */
+
+@import "common.less";
+
+
+/* food nav  */
+
+.autoCom{
+	width:1040px;
+	margin:0 auto;	
+}
+
+.food-warp{
+	
+	background:url(../images/zhusu.jpg) no-repeat 0 0;
+	height:200px;
+	.mtauto;
+	
+	.food-nav{
+		.autoCom;
+	}	
+	.food-nav-box{
+		padding-top:24px;
+		ul{
+			
+			li{
+				border-bottom:4px solid #65cbe5;	
+				height:38px;
+				width:212px;
+				margin-bottom:15px;
+				background:#f5f5f5;
+				line-height:38px;
+				padding-left:10px;
+				font-size:16px;
+				font-weight:bold;
+				cursor:pointer;
+				position:relative;
+				
+				i{
+					position:@abs;
+					right:	16px;
+					top:50%;
+					margin-top:-4px;
+					width:14px;
+					height:9px;
+					background:url(../images/down_icon.png) no-repeat 0 0;
+					&.active{
+						background:url(../images/down_icon.png) no-repeat 0 -9px;
+					}
+				}
+				
+				.food-nav-drop{
+					position:absolute;
+					left:0;
+					top:42px;
+					width:212px;
+					background:#f5f5f5;
+					font-size:0;
+					padding:10px 10px 10px 0;
+					a{
+						font-size:14px;
+						display:inline-block;
+						width:100%;	
+						padding-left:10px;
+						.transition;
+						font-weight:normal;
+						color:#404040;
+						border-bottom:1px solid #d2d2d2;
+						&:nth-last-of-type(1){
+							border-bottom:none;
+						}
+						&:hover{
+							background:#36c1e5;
+							color:#fff;	
+						}
+					}	
+				}
+			}	
+			
+			
+		}	
+	}
+}
+
+
+
+
+
+/* 列表 */
+
+.food-list-warp{
+	background:#ededed;
+	.mtauto;
+	
+	.food-list-box{
+		.autoCom;
+		
+		.food-allNum{
+			line-height:60px;
+			font-size:14px;
+			color:#919191;
+			
+			text-indent:8px;
+		}
+	}	
+	
+	.food-list{
+		
+		
+	}
+	.foot-list-x{
+		margin-right:-40px;
+		dl{
+			width:326px;
+			background:#fff;
+			padding:5px;
+			margin:0 16px 20px 0;
+			float:left;	
+			position:relative;
+			.transition;
+			&:hover{
+				.box-shadow(@blur:5px);
+				.border-radius(5px);
+				.transition;
+				
+				
+			}
+			dt{
+				float:left;	
+				width:166px;
+				height:112px;
+				overflow:hidden;
+				
+				img{
+					width:166px;
+					height:112px;
+					.transition;
+					&:hover{
+						.scale();
+					}	
+				}
+			}
+			dd{
+				float:left;
+				width:144px;
+				margin-left:12px;
+				
+				&.food-userName{
+					.slh;
+					width:134px !important;
+					padding-right:10px;
+					line-height:26px;
+					
+					a{
+						color:#404040;
+						font-size:14px;	
+						font-weight:bold;
+						.transition;
+						&:hover{
+							color:@headbg;	
+						}
+					}
+				}
+				&.food-tel{
+					line-height:28px;
+					padding-left:20px;
+					width:124px;
+					.slh;
+					background:url(../images/teliconsm.png) no-repeat 0 9px;
+				}	
+				&.food-address{
+					line-height:28px;
+					padding-left:16px;
+					width:124px;
+					font-size:12px;
+					.slh;
+					background:url(../images/addresssmall.png) no-repeat 2px 7px;
+				}
+				&.food-order{
+					line-height:28px;
+					a{
+						color:#fff;
+						font-size:12px;
+						padding:4px 14px;
+						background:#65b319;	
+					}
+				}
+			}
+			
+			.food-hot{
+				width:16px;
+				height:16px;
+				position:absolute;
+				right:5px;
+				top:5px	;
+				display:inline-block;
+				background:url(../images/hot2.png) no-repeat ;
+			}
+		}	
+	}
+	
+	.page{
+		height:40px;
+		text-align:right;
+		padding:16px 0;
+		font-size:0;
+		a{
+			margin:0 8px;
+			font-size:14px;
+			display:inline-block;
+			padding:8px 14px;
+			color:#353535;
+			background:#d2d2d2;	
+			.transition;
+			&:hover{
+				background:#4ecdc4;
+				color:#fff;
+			}
+			&.active{
+				background:#4ecdc4;
+				color:#fff;
+			}
+		}	
+	}
+}
+
+
+
+/* 加载更多*/
+
+.addmore{
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	padding:10px 0 20px 0;
+	a{
+		padding:10px 30px;
+		background: #4ecdc4;
+color: #fff;
+	}	
+}
+
+
+
+
+

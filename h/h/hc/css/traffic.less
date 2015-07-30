@@ -1,0 +1,480 @@
+/* LESS Document */
+
+@import "common.less";
+
+/* traffic-box */
+
+.traffic-box{
+	.mtauto;
+	background:@wbg;
+	
+	.traffic-warp{
+		.sauto;
+		padding-top:20px;
+		
+		.traffic-top{
+			position:@res;
+			border-bottom:2px solid #cccccc;
+			line-height:80px;
+			padding-left:10px;
+			font-size:30px;
+			color:#1c1c1c;
+			
+			.car-icon{
+				position:@abs;
+				right:-20px;
+				bottom:-10px;
+				
+				a{
+					
+					width:50px;
+					height:50px;
+					display:none;
+					&.banche{
+						background:url(../images/car_icon.png) no-repeat 0px -30px ;	
+					}
+					&.zijia{
+						background:url(../images/car_icon.png) no-repeat -10px 26px ;
+					}
+					&.hangban{
+						
+						background:url(../images/car_icon.png) no-repeat -4px -85px ;
+					}
+					&.lieche{
+						background:url(../images/car_icon.png) no-repeat -4px -171px ;
+					}
+				}
+			}
+		}	
+		
+		
+		
+		.tra-list{
+			
+			margin-top:30px;
+			.tra-left-list{
+				width:220px;
+				ol{
+					
+					
+					&.tour_tip_warp{
+						li{
+							
+						
+						b{
+							.transition;
+							display:block;
+							width:26px;
+							height:20px;
+							position:@abs;
+							top:-18px;
+						}
+						&.sbanche{
+							&:hover{
+								background:#4ecdc4;
+								color:#fff;
+								b{
+									
+									left:0;
+									background:url(../images/car_icon_tip.png) no-repeat -47px 0;
+								}	
+							}	
+							&.active{
+								background:#4ecdc4;
+								color:#fff;	
+								b{
+									
+									left:0;
+									background:url(../images/car_icon_tip.png) no-repeat -47px 0;
+								}	
+							}
+							b{
+								
+								left:0;
+								background:url(../images/car_icon_tip.png) no-repeat;
+							}	
+						}
+						&.trian{
+							&:hover{
+								background:#4ecdc4;
+								color:#fff;
+								b{
+									
+									left:26px;
+									background:url(../images/car_icon_tip.png) no-repeat -44px -42px;
+								}	
+							}	
+							&.active{
+								background:#4ecdc4;
+								color:#fff;	
+								b{
+									
+									left:26px;
+									background:url(../images/car_icon_tip.png) no-repeat -44px -42px;
+								}	
+							}
+							b{
+								
+								left:26px;
+								background:url(../images/car_icon_tip.png) no-repeat 0 -42px;
+							}	
+						}
+						&.gongjiao{
+							&:hover{
+								background:#4ecdc4;
+								color:#fff;
+								b{
+									
+									left:56px;
+									background:url(../images/car_icon_tip.png) no-repeat -47px -95px !important;
+								}	
+							}	
+							&.active{
+								background:#4ecdc4;
+								color:#fff;	
+								b{
+									
+									left:56px;
+									background:url(../images/car_icon_tip.png) no-repeat -47px -95px;
+								}	
+							}
+							b{
+								
+								left:56px;
+								background:url(../images/car_icon_tip.png) no-repeat 0 -95px;
+							}	
+						}
+						&.taxi{
+							&:hover{
+								background:#4ecdc4;
+								color:#fff;
+								b{
+									
+									left:77px;
+									background:url(../images/car_icon_tip.png) no-repeat -45px -162px;
+								}	
+							}	
+							&.active{
+								background:#4ecdc4;
+								color:#fff;	
+								b{
+									
+									left:77px;
+									background:url(../images/car_icon_tip.png) no-repeat -45px -162px;
+								}	
+							}
+							b{
+								
+								left:77px;
+								background:url(../images/car_icon_tip.png) no-repeat 0px -162px;
+							}	
+						}
+						}
+					}
+					
+					
+					li{
+						line-height:42px;
+						cursor:pointer;
+						line-height:42px;
+						text-align:center;
+						font-size:16px;
+						background:#c9c9c9;
+						color:#1c1c1c;
+						margin-bottom:20px;
+						.transition;
+						position:@res;
+						b{
+							.transition;
+							display:block;
+							width:26px;
+							height:16px;
+							position:@abs;
+							top:-14px;
+						}
+						&.sbanche{
+							&:hover{
+								background:#4ecdc4;
+								color:#fff;
+								b{
+									
+									left:0;
+									background:url(../images/scar_icon.png) no-repeat -47px 0;
+								}	
+							}	
+							&.active{
+								background:#4ecdc4;
+								color:#fff;	
+								b{
+									
+									left:0;
+									background:url(../images/scar_icon.png) no-repeat -47px 0;
+								}	
+							}
+							b{
+								
+								left:0;
+								background:url(../images/scar_icon.png) no-repeat;
+							}	
+						}
+						&.szijia{
+							&:hover{
+								background:#4ecdc4;
+								color:#fff;
+								b{
+									
+									left:26px;
+									background:url(../images/scar_icon.png) no-repeat -47px -61px;
+								}	
+							}	
+							&.active{
+								background:#4ecdc4;
+								color:#fff;	
+								b{
+									
+									left:26px;
+									background:url(../images/scar_icon.png) no-repeat -47px -61px;
+								}	
+							}
+							b{
+								
+								left:26px;
+								background:url(../images/scar_icon.png) no-repeat 0 -61px;
+							}	
+						}
+						&.shangban{
+							&:hover{
+								background:#4ecdc4;
+								color:#fff;
+								b{
+									
+									left:56px;
+									background:url(../images/scar_icon.png) no-repeat -45px -106px;
+								}	
+							}	
+							&.active{
+								background:#4ecdc4;
+								color:#fff;	
+								b{
+									
+									left:56px;
+									background:url(../images/scar_icon.png) no-repeat -45px -106px;
+								}	
+							}
+							b{
+								
+								left:56px;
+								background:url(../images/scar_icon.png) no-repeat 0 -106px;
+							}	
+						}
+						&.slieche{
+							&:hover{
+								background:#4ecdc4;
+								color:#fff;
+								b{
+									
+									left:77px;
+									background:url(../images/scar_icon.png) no-repeat -40px -160px;
+								}	
+							}	
+							&.active{
+								background:#4ecdc4;
+								color:#fff;	
+								b{
+									
+									left:77px;
+									background:url(../images/scar_icon.png) no-repeat -40px -160px;
+								}	
+							}
+							b{
+								
+								left:77px;
+								background:url(../images/scar_icon.png) no-repeat 6px -160px;
+							}	
+						}
+						
+						
+						
+					}	
+				}
+			}
+			
+			
+			.tra-right-warp{
+				
+				margin-left:30px;
+				width:788px;
+				
+				.imgbox{
+					width:788px;
+					margin-bottom:20px;
+					img {
+						display:block;
+						width:788px;	
+					}	
+					
+				}
+				.descBoxs{
+					line-height:28px;
+					font-size:14px;
+					p{
+						text-indent:2em;	
+					}	
+				}
+				.tra-right-box{
+					.com-one-ol{
+						
+						ol{
+							font-size:0;
+							background:@headbg;
+							height:42px;
+							width:100%;
+							line-height:42px;
+							li{
+								text-align:center;
+								font-size:14px;
+								color:@wbg;
+								width:11.688%;
+								display:inline-block;	
+								&.expwidth{
+									width:18% !important;
+								}
+							}
+						}
+					}
+					
+					.tra-list-info{
+						
+						margin-top:20px;
+						font-size:14px;
+						padding-bottom:80px;
+						.cmsty{
+							width:11.688%;
+							text-align:center;
+							line-height:80px;
+							border-right:1px solid #e1ebf6;
+							height:80px;
+							overflow:hidden;
+						}
+						.tra-list-col{
+							
+							height:80px;
+							.go-off{
+								text-decoration:underline;	
+								font-weight:bold;
+								color:#1b0e25;
+							}
+							.car-time{
+								color:#1b0e25;
+								font-weight:bold;	
+							}
+							.start-go{
+								text-align:left;
+								width:15% !important;
+								line-height:24px;
+								font-size:12px;
+								padding-left:2%;
+							}
+							.through{
+								
+							}
+							.Models{
+								
+							}
+							.Price{
+								padding-top:14px;
+								height:64px;
+								line-height:26px;
+								span,em{ display:inline-block; width:100%;  }
+								span{
+									color:#f00;
+									font-weight:bold;
+									font-size:16px;
+								}
+								em{
+									color:#bdbdbd;
+									font-style:normal;
+								}
+							}
+							.Ticket{
+								color:#068009;
+								font-weight:bold;
+							}
+							.Operation{
+								border-right:none;
+								a{
+									line-height:24px;
+									display:inline-block;
+									padding:6px 12px;
+									background:#4ecdc4;
+									border-radius:4px;	
+									color:#fff;
+								}
+								
+							}
+						}
+					}
+				}	
+			}
+		}
+		
+		
+		
+		
+	}	
+}
+
+/* 小贴士 */
+
+.tip_top_banner{
+	padding-top:20px;
+	height:88px;
+	background:url(../images/tip_ban.png) no-repeat 0 0;
+	
+	.car-icon{
+		position:@abs;
+		right:-20px;
+		bottom:-10px;
+		
+		a{
+			
+			width:60px !important;
+			height:50px;
+			display:none;
+			&.banche2{
+				background:url(../images/car_icon2.png) no-repeat 10px 14px ;	
+			}
+			&.zijia2{
+				background:url(../images/car_icon2.png) no-repeat 0px -38px ;
+			}
+			&.hangban2{
+				
+				background:url(../images/car_icon2.png) no-repeat 10px -92px ;
+			}
+			&.lieche2{
+				background:url(../images/car_icon2.png) no-repeat 10px -148px ;
+			}
+		}
+	}
+}
+
+/* 内容小贴士 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

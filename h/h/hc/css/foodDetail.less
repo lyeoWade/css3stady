@@ -1,0 +1,557 @@
+/* LESS Document */
+
+@import "common.less";
+
+
+
+
+@color:#65b319;
+
+/*   content  */
+.cs{
+color:#ff8e21;
+font-size:16px;
+font-weight:bold;
+}
+.order{
+	margin-top:8px;
+	a{
+		display:inline-block;
+		padding:8px 20px;
+		color:#fff;
+		background:@color;	
+	}
+}
+.fd-product-warp{
+	
+	
+	
+	.mtauto;
+	.fd-product-box{
+		padding:20px 80px 0;
+		/*background: #fff;*/
+	}
+	.fd-product-desc{
+		
+		padding:0 40px 20px;	
+		background: #fff;
+		.fd-product-banner{
+			width:680px;
+		}
+		.fd-product-banner-warp{
+			
+			position:relative;
+			width:680px;
+			height:342px;
+			overflow:hidden;
+			.fd-prev,
+			.fd-next{
+				display:inline-block;
+				width:34px;
+				height:34px;
+				position:absolute;
+				top:50%;
+				margin-top:-17px;
+				z-index: 999;
+			}
+			.fd-prev{
+				left:-80px;
+				background:url(../images/fdprev.png) repeat 0 0;
+			}
+			.fd-next{
+				right:-80px;
+				background:url(../images/fdprev.png) repeat -33px 0;
+			}
+			ul{
+				width:680px;
+				height:342px;
+				.abstl0;	
+			}
+			li{
+				.abstl0;
+				
+				img{
+					width:680px;
+					height:342px;
+					display:block;	
+				}
+				.fd-mark{
+					position:absolute;
+					left:0;
+					bottom:0;
+					background:url(../images/black-mark.png) repeat;
+					padding:18px 40px;
+					font-size:14px;
+					color:#fff;
+				}	
+			}
+			
+		}
+		
+		.fd-product-order{
+				
+		}
+		
+		.fd-product-order-box{
+			height:344px;
+			padding:0 0 0 50px;
+			width:220px;
+			
+			.fd-xf{
+				font-size:16px;
+				color:@color;
+				font-weight:bold;
+				line-height:30px;
+			}
+			.fd-price{
+				color:@color;
+				font-size:30px;
+				line-height:40px;	
+				position:relative;
+				padding-left:10px;
+				font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+				em,i{
+					font-style:normal;	
+				}
+				em{
+					position:absolute;
+					left:0px;
+					top:-2px;
+					font-size:14px;	
+				}
+				i{
+					text-transform:uppercase;
+					font-size:12px;
+					position:absolute;
+					top:-2px;
+						
+				}
+			}
+			
+			.order-tel{
+				margin-top:40px;
+				margin-bottom:8px;
+					.cs;
+			}
+			.order-number{
+				.cs;
+			}
+			
+			.order-line{
+				.order;
+			}
+			.order-order{
+				.order;
+			}
+		}
+	}
+}
+
+
+
+
+
+/*  目的地 景点详情  */
+
+.fd-product-order-box{
+	
+	.tuor_notice_title{
+		color:#ff9328;
+		font-size:20px;	
+		line-height:40px;
+	}
+	
+	.tour_notice{
+		margin-bottom:20px;
+		font-weight:bold;
+		.tour_notice_tit{
+			font-size:14px;
+			color:#1c1c1c;
+			line-height:30px;
+		}
+		.tour_notice_num{
+			font-size:18px;
+			color:#ff9328;
+		}
+	}
+}
+
+/* user_info_box */
+
+.user_info_box{
+	
+	.user_info_line1{
+		padding:40px 0;
+		.user_photo{
+			width:160px;
+			img{
+				border:1px solid #c1c1c1;
+				.border-radius(50%);
+				width:56px;
+				height:56px;
+				display:inline-block;	
+			}
+			span{
+				font-size:14px;	
+				padding-left:18px;
+			}	
+		}
+		.user_say{
+			
+			width:460px;
+			height:50px;
+			background:url(../images/yinghao.png) no-repeat;	
+			color:#1c1c1c;
+			font-size:16px;
+			line-height:50px;
+			padding:0 30px;
+		}
+	}
+	.user_info_line2{
+		line-height:30px;
+		font-size:14px;
+		color:#404040;
+		span{
+			width:98%;
+			&.address{
+				background:url(../images/address.png) no-repeat 0 6px;
+				padding-left:20px;
+				.slh;
+			}
+			&.tel{
+				.slh;
+				margin-left:30px;
+				padding-left:28px;
+				background:url(../images/telicon.png) no-repeat 0 6px;
+			}
+			
+				
+		}
+	}
+		
+}
+
+/* 分享景点 */
+
+.share_tour{
+	margin-top:60px;
+	padding-left:50px;
+	.share_tour_tit{
+		font-size:16px;	
+		margin-bottom:30px;
+	}	
+	
+	.share_box{
+		a{
+			display:inline-block;
+			width:52px !important;
+			height:50px !important;
+			margin:0 4px;
+			span{
+				display:inline-block;
+				width:52px !important;
+				height:50px !important;
+				padding:0 !important;
+			}
+			&.weixin{
+				span{
+					background:url(../images/detail_share.png) no-repeat 0px 0 !important;
+				}
+				
+			}	
+			&.qq{
+				span{
+					background:url(../images/detail_share.png) no-repeat -59px 0 !important;
+				}
+				
+			}	
+		}
+	}
+}
+
+
+/* 景点详情  */
+
+.content_descript_box{
+	.content_warp{
+		.mtauto;
+		border-top:1px solid #aaa;
+		padding-top:40px;
+		background:#fff;	
+	}
+	.content_box{
+		padding:0 120px;
+		h2{
+			line-height:40px;
+			font-weight:normal;
+			span{
+				padding-right:14px;
+				display:inline-block;
+				line-height:34px;
+				border-bottom:2px solid #4ecdc4;	
+			}	
+		}	
+		.des_box{
+			font-size:14px;
+			line-height:24px;
+			padding:12px 0;	
+		}
+	}
+}
+
+/*  景点周边 */
+
+.tour_Product{
+	background:#fff;
+	.mtauto;
+	margin-top:20px;
+	margin-bottom:40px;
+	.tour_warp{
+		padding:0 80px;
+		
+	}
+	
+	.tour_warp_btn{
+		border-bottom:1px solid #a0a0a0;
+		text-align:center;
+		li{
+			display:inline-block;
+			*display:inline;
+			*zoom:1;
+			cursor:pointer;
+			font-size:14px;
+			padding:10px 20px;
+			border:1px solid #e6e6e6;
+			border-bottom:1px solid #fff;
+			.transition;
+			&:hover{
+				color:#fff;
+				background:#4ecdc4;	
+				border:1px solid #4ecdc4;
+			}
+			
+			&.active{
+				color:#fff;
+				background:#4ecdc4;	
+				border:1px solid #4ecdc4;
+			}
+		}	
+	}
+	
+	.tour_box{
+		padding:0 40px;
+		
+		.tour_map{
+			width:960px;
+			height:385px;
+			background:#999;
+		}	
+	}
+}
+
+
+/* 周边美食 */
+
+.goodfood{
+	
+	.room{
+		
+		dd{
+			span{
+				padding-left:24px;
+				width:130px;	
+			}
+			&.phone{
+				line-height:30px;
+				background:url(../images/telicon.png) no-repeat 0 6px;	
+				.slh;
+			}	
+			&.address{
+				.slh;
+				line-height:30px;	
+				background:url(../images/address.png) no-repeat 0 6px;	
+			}
+		}	
+	}
+	
+	
+	.strategy{
+		
+		.ms_title{
+			line-height:24px !important;
+			.slh;
+			width:160px;
+			a{
+				display:inline-block;
+					width:100%;
+					.slh;
+				color:#cf7c00 !important;	
+			}	
+		}	
+		.strategy_view{
+			margin-top:46px;
+			.time{
+				margin-right:20px;	
+			}
+			.cont{
+				padding-left:20px;
+				background:url(../images/eyes.png) no-repeat 0 3px;	
+			}
+		}
+	}
+	
+	.goodfood_warp{
+		padding-top:24px;
+		dl{
+			width:290px;
+			margin:0 30px 24px 0;
+			img{
+				width:	112px;
+				height:112px;
+				display:block;	
+			}
+			dt{
+				float:left;
+				width:	112px;
+				height:112px;	
+				margin-right:16px;
+			}
+			dd{
+				float:left;
+				width:160px;
+				&.ms_title{
+					line-height:34px;
+					font-size:14px;
+					
+					a{
+						display:inline-block;
+						width:100%;
+						.slh;
+						color:#1c1c1c;	
+					}
+				}	
+				&.ms_price{
+					
+					font-size:	28px;
+					font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+					
+					span{
+						padding:0 12px;
+						position:relative;
+						color:#65b319;
+					}
+					
+					i,em{
+						font-style:normal;
+						position:absolute;
+						display:inline-block;
+						top:5px;
+						text-transform:uppercase;
+						
+					}
+					i{
+					
+						font-size:14px;	
+					}
+					em{
+						
+						left:0;
+						font-size:14px;	
+					}
+				}
+			}
+		}	
+	}
+		
+}
+
+/* 如何到达 */
+
+.how_Arrive{
+	padding:15px 0;
+	line-height:30px;
+	font-size:14px;	
+}
+
+/* 旅行社 */
+
+.travel{
+	
+	.no_travel{
+		width:300px;
+		height:80px;
+		margin:30px 0 0 300px;
+		background:url(../images/no_travel.png) no-repeat;
+	}
+}
+
+
+/*  酒店详情右边版块 */ 
+
+
+.fd-product-order-box{
+		
+}
+.hotel_notice_title{
+	font-size:18px;
+	color:@green;	
+}
+.hotel_fd_price{
+	margin:10px 0;
+	.hotel_fd_price_box{
+		position:@res;
+		line-height:50px;
+		font-size:22px;	
+		color:@green;
+		display:inline-block;
+		padding-left:10px;
+		em,i{
+			font-style:normal;
+			position:@abs;
+				
+			
+		}
+		em{
+			top:-2px;
+			left:0;	
+			font-size:14px;
+		}
+		i{
+			top:-4px;
+			font-size:12px;
+			right:10px;
+		}
+	}
+	
+	span{
+		padding-right:40px;	
+		&.sta{
+			font-size:18px;	
+		}
+	}
+}
+.hotel_order_line{
+	line-height:40px;
+	height:40px;
+	margin-top:10px;
+	a{
+		background:@green;
+		color:#fff;
+		padding:8px 20px;	
+	}
+	
+}
+
+.hotel_order_line,.hotel_order_line_num{
+	color:@orange;
+	font-size:16px;
+	line-height:30px;
+}
+
+
+
+
+
+
+
+

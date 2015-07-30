@@ -1,0 +1,105 @@
+/* LESS Document */
+
+
+@import "common.less";
+
+.advice-box{
+	margin-bottom:60px;	
+}
+
+.com-advice-1{
+	border:1px solid #cfcfcf;
+	padding:40px 15px;	
+	
+	h2{
+		font-weight:normal;
+		margin-bottom:40px;
+	}
+	.advice_tip{
+	/*	background:#fffbed;*/
+		padding:10px 0 10px 50px;
+		background:url(../images/advice_tip_icon.png) no-repeat 6px center #fffbed;
+		line-height:20px;
+		color:#8e8e8e;
+		margin-bottom:40px;
+	}
+	
+	.advice_title_top{
+		color:#8e8e8e;
+		margin-bottom:25px;
+	}
+	
+	.textarea{
+		width:95%;
+		height:220px;
+		border:1px solid #cfcfcf;	
+		padding:1%;
+		margin-bottom:25px;
+		line-height:24px;
+		font-size:14px;
+	}
+	.input_box{
+		
+		li{
+			margin-bottom:16px;
+			p{
+				width:80px;
+				text-align:right;
+				padding-right:10px;
+				&.explain{
+					height:30px;
+					line-height:30px;
+					
+					em{
+						color:#f00;
+						font-size:14px;
+						display:inline-block;
+						padding-right:8px;
+						font-style:normal;	
+					}
+				}
+			}
+			.input_warp{
+				
+				input{
+					&.success{
+						border:1px solid #0C3;	
+					}	
+					&.error{
+						border:1px solid red;	
+					}
+				}
+				
+				span{
+					padding-left:14px;
+					&.success{
+						color:#0C3;	
+					}	
+					&.error{
+						color:red;	
+					}
+				}	
+			}
+			.comstyle{
+				border:1px #cfcfcf solid;
+				width:320px;
+				height:30px;
+				padding-left:8px;
+				font-size:14px;
+			}
+		}	
+	}
+	.advice_btn{
+		width:158px;
+		height:51px;
+		margin-left:90px;
+		color:#fff;
+		font-size:16px;
+		cursor:pointer;
+		background:url(../images/advice_btn.png) no-repeat;	
+	}
+}
+
+
+
+
